@@ -1,0 +1,21 @@
+apply plugin: 'python-sdist'
+
+python {
+	testDir = file('tests')
+    // Use a specific python version if it is available in the PATH it
+    // will use it
+    details.prependExecutableDirectory(new File('/usr/bin/python3.4'))
+    // or details.appendExecutableDirectory(new File('/usr/bin/python3.4'))
+    details.pythonVersion = '3.4'
+
+}
+
+project.tasks.findByName('installPythonRequirements').sorted = false
+
+dependencies {
+
+}
+
+task wrapper(type: Wrapper) {
+   gradleVersion = '3.5'
+}
